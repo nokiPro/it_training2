@@ -1,0 +1,24 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Name:</strong>
+  <%= @contact.name %>
+</p>
+
+<p>
+  <strong>Email:</strong>
+  <%= @contact.email %>
+</p>
+
+<p>
+  <strong>Category:</strong>
+  <%= ret_category(@contact.category) %>
+</p>
+
+<p>
+  <strong>Content:</strong>
+  <%= @contact.content %>
+</p>
+
+<%= link_to '戻る', new_contact_path(id: @contact.id) %>
+<%= link_to '送信', contacts_send_mail_path(id: @contact.id) %>

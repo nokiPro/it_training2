@@ -22,15 +22,11 @@ class BlogsController < ApplicationController
   # POST /blogs or /blogs.json
   def create
     @blog = Blog.new(blog_params)
-
-    respond_to do |format|
-      if @blog.save
-        format.html { redirect_to blog_url(@blog.id), notice: "Blog was successfully created." }
-        format.json { render :show, status: :created, location: @blog }
-      else
-        format.html { render :new, status: :unprocessable_entity }
-        format.json { render json: @blog.errors, status: :unprocessable_entity }
-      end
+    if @blog.save
+      NoticeMailer.sendmail_blog(@blog).deliver #追記
+      redirect_to @blog, notice: 'ブログが作成されました'
+    else
+      render :new
     end
   end
 
@@ -49,10 +45,9 @@ class BlogsController < ApplicationController
 
   # DELETE /blogs/1 or /blogs/1.json
   def destroy
-    binding.pry
     @blog.destroy
     respond_to do |format|
-      format.html { render :index, notice: "Blog was successfully destroyed." }
+      format.html { redirect_to blogs_url, notice: "Blog was successfully destroyed." }
       format.json { head :no_content }
     end
   end
