@@ -12,7 +12,11 @@ class BlogsController < ApplicationController
 
   # GET /blogs/new
   def new
-    @blog = Blog.new
+    if user_signed_in?
+      @blog = Blog.new
+    else
+      redirect_to blogs_url, notice: "登録を完了させてください。"
+    end
   end
 
   # GET /blogs/1/edit
