@@ -1,42 +1,24 @@
-<p id="notice"><%= notice %></p>
+<h1>ブラグ一覧</h1>
+<p  class="m-5 text-succes" id="notice"><%= notice %></p>
+<button type="button" class="btn btn-primary" id="new-blog-link"><%= link_to '新規ブログを作成する', new_blog_path, class: "text-white"%></button>
 
-<% if current_user.present? %>
-  <p>こんにちは、<%= current_user.name %>さん！</p>
-<% else %>
-  <p>こんにちは、ゲストさん！</p>
-<% end %>
-
-<h1>Blogs</h1>
-
-<table>
-  <thead>
-    <tr>
-      <th>Title</th>
-      <th>Content</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
-
-  <tbody>
+<div class="container">
+  <div class="row">
     <% @blogs.each do |blog| %>
-      <tr>
-        <td><%= blog.title %></td>
-        <td><%= blog.content %></td>
-        <td><%= link_to 'Show', blog %></td>
-        <td><%= link_to 'Edit', edit_blog_path(blog) %></td>
-        <td><%= link_to 'Destroy', blog, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
+    <div class="col-3">
+      <div class="card p-2 bg-light" style="border: none;">
+        <svg class="bd-placeholder-img card-img-top" width="100%" height="180" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice" focusable="false" role="img" aria-label="Placeholder: Image cap"><title>Placeholder</title><rect fill="#868e96" width="100%" height="100%"/><text fill="#dee2e6" dy=".3em" x="50%" y="50%">Image cap</text></svg>
+        <div class="card-body">
+          <h5 class="card-title"><%= blog.title %></h5>
+          <p class="card-text"><%= blog.content %></p>
+          <button href="#" class="btn btn-primary"><%= link_to 'Show', blog, class: "text-white"%></button>
+        </div>
+        <div class="blog-links">
+            <%= link_to 'Edit', edit_blog_path(blog), class: 'btn' %> |
+            <%= link_to 'Destroy', blog, method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn' %>
+          </div>
+      </div>
+    </div>
     <% end %>
-  </tbody>
-</table>
-
-<br>
-
-<%= link_to 'New Blog', new_blog_path %>
-<%= link_to 'Contact', contacts_path %>
-<% if current_user.present? %>
-  <%= link_to 'edit', edit_user_registration_path %>
-  <%= link_to 'Sign out', destroy_user_session_path %>
-<% else %>
-  <%= link_to 'Sign up', new_user_registration_path %>
-<% end %>
+  </div>
+</div>

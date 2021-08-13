@@ -1,5 +1,6 @@
 <h1>New Contact</h1>
 
-<%= render 'form', contact: @contact %>
-
-<%= link_to '戻る', blogs_path %>
+<div class="container">
+  <%= render 'form', contact: @contact %>
+  <%= link_to '戻る', blogs_path, class: "btn btn-secondary m-5" %>
+</div>

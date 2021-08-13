@@ -1,7 +1,7 @@
 <%= form_with(model: contact) do |form| %>
   <% if contact.errors.any? %>
     <div id="error_explanation">
-      <h2><%= pluralize(contact.errors.count, "error") %> prohibited this contact from being saved:</h2>
+      <h2><%= pluralize(contact.errors.count, "error")%> prohibited this contact from being saved:</h2>
 
       <ul>
         <% contact.errors.each do |error| %>
@@ -11,34 +11,44 @@
     </div>
   <% end %>
 
-  <div class="field">
+  <div class="field m-5">
     <%= form.label :name %>
-    <%= form.text_field :name %>
+    <%= form.text_field :name, class: "form-control" %>
   </div>
 
-  <div class="field">
+  <div class="field m-5">
     <%= form.label :email %>
-    <%= form.text_field :email %>
+    <%= form.text_field :email, class: "form-control" %>
   </div>
 
-  <div class="field">
-    <%= form.label :category %>
-    <%= form.label "Achieveに関して" %>
-    <%= form.radio_button :category, 1 %>
-    <%= form.label "テキストに関して" %>
-    <%= form.radio_button :category, 2 %>
-    <%= form.label "説明会に関して" %>
-    <%= form.radio_button :category, 3 %>
-    <%= form.label "その他" %>
-    <%= form.radio_button :category, 4 %>
+  <div class="field m-5">
+    <%= form.label :category %></li>
+    <ul class="list-unstyled">
+      <li>
+      <%= form.radio_button :category, 1 %>
+      <%= form.label "Achieveに関して" %>
+      </li>
+      <li>
+      <%= form.radio_button :category, 2 %>
+      <%= form.label "テキストに関して" %>
+      </li>
+      <li>
+      <%= form.radio_button :category, 3 %>
+      <%= form.label "説明会に関して" %>
+      </li>
+      <li>
+      <%= form.radio_button :category, 4 %>
+      <%= form.label "その他" %>
+      </li>
+    </ul>
   </div>
 
-  <div class="field">
+  <div class="field m-5">
     <%= form.label :content %>
-    <%= form.text_area :content %>
+    <%= form.text_area :content, class: "form-control" %>
   </div>
 
-  <div class="actions">
-    <%= form.submit "内容確認" %>
+  <div class="actions m-5">
+    <%= form.submit "内容確認", class: "btn-success" %>
   </div>
 <% end %>

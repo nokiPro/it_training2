@@ -1,0 +1,18 @@
+<header class="navbar navbar-expand-sm navbar-dark bg-dark mb-3">
+  <%= link_to "Blog app", '#', id: "logo" %>
+  <% if current_user.present?%>
+    <p>こんにちは、<%= current_user.name %>さん！</p>
+  <% else %>
+  <p>こんにちは、ゲストさん！</p>
+  <% end %>
+  <nav class="collapse navbar-collapse justify-content-end">
+    <ul class="navbar-nav">
+      <% if current_user.present? %>
+        <li class="nav-item active"><%= link_to 'edit', edit_user_registration_path, class: "nav-link" %></li>
+        <li class="nav-item active"><%= link_to 'Sign out', destroy_user_session_path, class: "nav-link" %></li>
+      <% else %>
+        <li><%= link_to 'Sign up', new_user_registration_path %></li>
+      <% end %>
+      </ul>
+  </nav>
+</header>
