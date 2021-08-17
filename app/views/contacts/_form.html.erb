@@ -11,34 +11,44 @@
     </div>
   <% end %>
 
-  <div class="field">
-    <%= form.label :name %>
-    <%= form.text_field :name %>
-  </div>
-
-  <div class="field">
-    <%= form.label :email %>
-    <%= form.text_field :email %>
-  </div>
-
-  <div class="field">
-    <%= form.label :category %>
-    <%= form.label "Achieveに関して" %>
-    <%= form.radio_button :category, 1 %>
-    <%= form.label "テキストに関して" %>
-    <%= form.radio_button :category, 2 %>
-    <%= form.label "説明会に関して" %>
-    <%= form.radio_button :category, 3 %>
-    <%= form.label "その他" %>
-    <%= form.radio_button :category, 4 %>
-  </div>
-
-  <div class="field">
-    <%= form.label :content %>
-    <%= form.text_area :content %>
-  </div>
-
-  <div class="actions">
-    <%= form.submit "内容確認" %>
+  <div class="container my-5">
+    <form method="post" action="">
+      <div class="form-group form-item">
+        <%= form.label :名前 %>
+        <%= form.text_field :name, class: "form-control" %>
+      </div>
+      <div class="form-group form-item">
+        <%= form.label :メールアドレス %>
+        <%= form.text_field :email, class: "form-control" %>
+      </div>
+      <div class="field form-group form-item">
+        <%= form.label :カテゴリー %>
+        <ul class="list-unstyled">
+          <li>
+            <%= form.radio_button :category, 1 %>
+            <%= form.label "Achieveに関して" %>
+          </li>
+          <li>
+            <%= form.radio_button :category, 2 %>
+            <%= form.label "テキストに関して" %>
+          </li>
+          <li>
+            <%= form.radio_button :category, 3 %>
+            <%= form.label "説明会に関して" %>
+          </li>
+          <li>
+            <%= form.radio_button :category, 4 %>
+            <%= form.label "その他" %>
+          </li>
+        </ul>
+      </div>
+      <div class="form-group form-item">
+        <%= form.label :content %>
+        <%= form.text_area :content, class: "form-control" %>
+      </div>
+      <div class="actions form-group form-item">
+        <%= form.submit "内容確認" %>
+      </div>
+    </form>
   </div>
 <% end %>

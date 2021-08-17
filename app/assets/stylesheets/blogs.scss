@@ -1,3 +1,32 @@
 // Place all the styles related to the blogs controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: https://sass-lang.com/
+
+.title {
+  margin-top: 50px;
+}
+
+.my-container {
+  margin: 50px 0;
+}
+
+.box-in {
+  background:#ddd; padding:15px;
+  border-radius: 15px;
+}
+
+.button {
+  position: fixed;
+  right: 15px;
+  bottom: 80px;
+  transition: 1s;
+  opacity: 0.7;
+}
+
+.button-back {
+  position: fixed;
+  left: 50px;
+  bottom: 80px;
+  transition: 1s;
+  opacity: 0.7;
+}

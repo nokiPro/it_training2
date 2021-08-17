@@ -1,42 +1,29 @@
-<p id="notice"><%= notice %></p>
-
-<% if current_user.present? %>
-  <p>こんにちは、<%= current_user.name %>さん！</p>
-<% else %>
-  <p>こんにちは、ゲストさん！</p>
+<div class="container my-container">
+  <% if user_signed_in? %>
+    <h1>ブログ一覧</h1>
+    <p id="notice"><%= notice %></p>
+    <div class="row">
+      <% @blogs.each do |blog| %>
+        <div class="col-md-4" style="margin-top: 12px;">
+          <div class="box-in">
+            <h2><%= blog.title %></h2>
+            <p><%= blog.content %></p>
+            <p><%= blog.created_at %></p>
+            <div class="blog-links">
+              <%= link_to '詳細', blog, class: 'btn btn-primary' %>
+              <%= link_to '編集', edit_blog_path(blog), class: 'btn btn-info' %> |
+              <%= link_to '削除', blog, method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-danger' %>
+            </div>
+          </div>
+        </div>
+      <% end %>
+    </div>
+    <div id="new-blog-link" class="button">
+      <%= link_to '新規作成', new_blog_path, class: 'btn btn-primary .text-dark' %>
+    </div>
+  <% else %>
+    <h2> 現在ログインしていません </h2>
+    <%= link_to "ログイン", new_user_session_path, class: 'post' %>
+    <%= link_to "新規登録", new_user_registration_path, class: 'post' %>
 <% end %>
-
-<h1>Blogs</h1>
-
-<table>
-  <thead>
-    <tr>
-      <th>Title</th>
-      <th>Content</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
-
-  <tbody>
-    <% @blogs.each do |blog| %>
-      <tr>
-        <td><%= blog.title %></td>
-        <td><%= blog.content %></td>
-        <td><%= link_to 'Show', blog %></td>
-        <td><%= link_to 'Edit', edit_blog_path(blog) %></td>
-        <td><%= link_to 'Destroy', blog, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
-
-<br>
-
-<%= link_to 'New Blog', new_blog_path %>
-<%= link_to 'Contact', contacts_path %>
-<% if current_user.present? %>
-  <%= link_to 'edit', edit_user_registration_path %>
-  <%= link_to 'Sign out', destroy_user_session_path %>
-<% else %>
-  <%= link_to 'Sign up', new_user_registration_path %>
-<% end %>
+</div>

@@ -1,14 +1,16 @@
-<p id="notice"><%= notice %></p>
+<div class="container my-container">
+  <h1>詳細</h1>
+  <p id="notice"><%= notice %></p>
+  <p>
+    <strong>Title:</strong>
+    <%= @blog.title %>
+  </p>
 
-<p>
-  <strong>Title:</strong>
-  <%= @blog.title %>
-</p>
+  <p>
+    <strong>Content:</strong>
+    <%= @blog.content %>
+  </p>
 
-<p>
-  <strong>Content:</strong>
-  <%= @blog.content %>
-</p>
-
-<%= link_to 'Edit', edit_blog_path(@blog) %> |
-<%= link_to 'Back', blogs_path %>
+  <%= link_to 'ホーム', blogs_path, class: 'btn btn-secondary' %> |
+  <%= link_to '編集', edit_blog_path(@blog), class: 'btn btn-info' %>
+</div>

@@ -1,24 +1,25 @@
-<p id="notice"><%= notice %></p>
+<div class="container my-container">
+  <h1>内容確認</h1>
+  <p>
+    <strong>Name:</strong>
+    <%= @contact.name %>
+  </p>
 
-<p>
-  <strong>Name:</strong>
-  <%= @contact.name %>
-</p>
+  <p>
+    <strong>Email:</strong>
+    <%= @contact.email %>
+  </p>
 
-<p>
-  <strong>Email:</strong>
-  <%= @contact.email %>
-</p>
+  <p>
+    <strong>Category:</strong>
+    <%= ret_category(@contact.category) %>
+  </p>
 
-<p>
-  <strong>Category:</strong>
-  <%= ret_category(@contact.category) %>
-</p>
+  <p>
+    <strong>Content:</strong>
+    <%= @contact.content %>
+  </p>
 
-<p>
-  <strong>Content:</strong>
-  <%= @contact.content %>
-</p>
-
-<%= link_to '戻る', new_contact_path(id: @contact.id) %>
-<%= link_to '送信', contacts_send_mail_path(id: @contact.id) %>
+  <%= link_to '戻る', new_contact_path(id: @contact.id), class: 'btn btn-secondary'  %>
+  <%= link_to '送信', contacts_send_mail_path(id: @contact.id), class: 'btn btn-success'  %>
+  </div>
