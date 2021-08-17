@@ -1,25 +1,29 @@
 <div class="container my-container">
   <h1>内容確認</h1>
   <p>
-    <strong>Name:</strong>
+    <strong>名前:</strong>
+    <br>
     <%= @contact.name %>
   </p>
 
   <p>
-    <strong>Email:</strong>
+    <strong>メールアドレス:</strong>
+    <br>
     <%= @contact.email %>
   </p>
 
   <p>
-    <strong>Category:</strong>
+    <strong>カテゴリー:</strong>
+    <br>
     <%= ret_category(@contact.category) %>
   </p>
 
   <p>
-    <strong>Content:</strong>
+    <strong>内容:</strong>
+    <br>
     <%= @contact.content %>
   </p>
 
-  <%= link_to '戻る', new_contact_path(id: @contact.id), class: 'btn btn-secondary'  %>
-  <%= link_to '送信', contacts_send_mail_path(id: @contact.id), class: 'btn btn-success'  %>
+  <%= link_to '戻る', new_contact_path(id: @contact.id), class: 'btn btn-secondary' %>
+  <%= link_to '送信', contacts_send_mail_path(id: @contact.id), class: 'btn btn-success' %>
   </div>

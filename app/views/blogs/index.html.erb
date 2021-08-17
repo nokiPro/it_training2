@@ -1,29 +1,23 @@
 <div class="container my-container">
-  <% if user_signed_in? %>
-    <h1>ブログ一覧</h1>
-    <p id="notice"><%= notice %></p>
-    <div class="row">
-      <% @blogs.each do |blog| %>
-        <div class="col-md-4" style="margin-top: 12px;">
-          <div class="box-in">
-            <h2><%= blog.title %></h2>
-            <p><%= blog.content %></p>
-            <p><%= blog.created_at %></p>
-            <div class="blog-links">
-              <%= link_to '詳細', blog, class: 'btn btn-primary' %>
-              <%= link_to '編集', edit_blog_path(blog), class: 'btn btn-info' %> |
-              <%= link_to '削除', blog, method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-danger' %>
-            </div>
+  <h1>ブログ一覧</h1>
+  <p id="notice"><%= notice %></p>
+  <div class="row">
+    <% @blogs.each do |blog| %>
+      <div class="col-md-4" style="margin-top: 12px;">
+        <div class="box-in">
+          <h2><%= blog.title %></h2>
+          <p><%= blog.content %></p>
+          <p><%= blog.created_at %></p>
+          <div class="blog-links">
+            <%= link_to '詳細', blog, class: 'btn btn-primary text-white' %>
+            <%= link_to '編集', edit_blog_path(blog), class: 'btn btn-info text-white' %> |
+            <%= link_to '削除', blog, method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-danger text-white' %>
           </div>
         </div>
-      <% end %>
-    </div>
-    <div id="new-blog-link" class="button">
-      <%= link_to '新規作成', new_blog_path, class: 'btn btn-primary .text-dark' %>
-    </div>
-  <% else %>
-    <h2> 現在ログインしていません </h2>
-    <%= link_to "ログイン", new_user_session_path, class: 'post' %>
-    <%= link_to "新規登録", new_user_registration_path, class: 'post' %>
-<% end %>
+      </div>
+    <% end %>
+  </div>
+  <div id="new-blog-link" class="button">
+    <%= link_to '新規作成', new_blog_path, class: 'btn btn-primary text-white' %>
+  </div>
 </div>

@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
-  root to: "blogs#index"
+  root to: "top#top"
+  get 'users', to: 'top#users'
   devise_for :users
   resources :blogs
   get  "contacts/send_mail"  => "contacts#send_mail"

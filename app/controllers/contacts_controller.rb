@@ -22,7 +22,7 @@ class ContactsController < ApplicationController
 
   def send_mail
     NoticeMailer.sendmail_contact(@contact).deliver #追記
-    redirect_to blogs_url, notice: "お問い合わせが完了しました！"
+    redirect_to root_url, notice: "お問い合わせが完了しました！"
   end
 
   # POST /contacts or /contacts.json
