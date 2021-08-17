@@ -7,6 +7,7 @@
         <div class="box-in">
           <h2><%= blog.title %></h2>
           <p><%= blog.content %></p>
+          <p><%= blog.user.email %></p>
           <p><%= blog.created_at %></p>
           <div class="blog-links">
             <%= link_to '詳細', blog, class: 'btn btn-primary text-white' %>
