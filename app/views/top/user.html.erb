@@ -1,0 +1,11 @@
+<div class="container my-container">
+  <h1>ユーザー一覧</h1>
+  <div class="row">
+    <% @users.each do |user| %>
+      <div class="col-md-2" style="margin-top: 12px;">
+        <h2><%= user.name %></h2>
+        <%= link_to '詳細', users_show_path(id: user.id), class: 'btn btn-primary text-white' %>
+      </div>
+    <% end %>
+  </div>
+</div>

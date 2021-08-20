@@ -1,0 +1,7 @@
+<div class="container my-container">
+  <h1>詳細</h1>
+  <%= image_tag(@user.icon) if @user.icon.attached? %>
+  <p>名前 : <%= @user.name %></p>
+  <p>メールアドレス : <%= @user.email %></p>
+  <%= link_to "戻る", users_path, class: 'btn btn-secondary text-white' %>
+</div>
