@@ -3,11 +3,15 @@ class BlogsController < ApplicationController
 
   # GET /blogs or /blogs.json
   def index
-    @blogs = Blog.all
+    @blogs = @blogs = Blog.index_all.page(params[:page])
   end
+
 
   # GET /blogs/1 or /blogs/1.json
   def show
+    @blog = Blog.find(params[:id])
+    @comments = @blog.comments
+    @comment = @blog.comments.build
   end
 
   # GET /blogs/new

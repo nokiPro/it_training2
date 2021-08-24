@@ -6,4 +6,5 @@ class User < ApplicationRecord
   validates :name, presence: true #追記
   has_one_attached :icon
   has_many :blogs, dependent: :destroy
+  has_many :comments
 end

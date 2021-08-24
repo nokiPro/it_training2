@@ -34,6 +34,7 @@ gem 'jquery-rails'
 
 gem 'uglifier'
 gem 'coffee-rails'
+gem 'kaminari'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
@@ -54,6 +55,7 @@ group :development do
   gem 'binding_of_caller'
   gem 'letter_opener_web', '~> 1.0'
   gem 'rexml', '~> 3.2', '>= 3.2.4'
+  gem "bullet"
 end
 
 group :test do
