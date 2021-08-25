@@ -12,8 +12,11 @@
 
   <body>
     <%# <% if user_signed_in? %> %>
+    <div class="container my-container">
       <%= render 'layouts/header' %>
+      <p id="notice"><%= notice %></p>
       <%= yield %>
+    </div>
       <%= render 'layouts/footer' %>
     <%# <% else %>
       <%# <h2> 現在ログインしていません </h2>

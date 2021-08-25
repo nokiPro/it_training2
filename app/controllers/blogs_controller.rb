@@ -12,6 +12,7 @@ class BlogsController < ApplicationController
     @blog = Blog.find(params[:id])
     @comments = @blog.comments
     @comment = @blog.comments.build
+    @favorite = current_user.favorites.find_by(blog_id: @blog.id)
   end
 
   # GET /blogs/new
@@ -59,6 +60,10 @@ class BlogsController < ApplicationController
       format.html { redirect_to blogs_url, notice: "Blog was successfully destroyed." }
       format.json { head :no_content }
     end
+  end
+
+  def favorite
+    ＠blogs = current_user.favorite_blogs
   end
 
   private

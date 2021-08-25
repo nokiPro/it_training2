@@ -11,26 +11,35 @@
     <%= @blog.content %>
   </p>
 
-  <div class="comment-wrapper border-top mb-10">
-  <p class="mt-5">コメント一覧</p>
-  <% @comments.each do |c| %>
-    <div>
-      <a href="<%= users_show_path(c.user_id) %>">icon</a>
-      <br />
-      <%= c.content %>
-      <div class="blog-links">
-        <%= link_to '編集', "#", class: 'btn btn-info text-white' %> |
-        <%= link_to '削除', blog_comment_path(c.id), method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-danger text-white' %>
-      </div>
-    </div>
-    <br />
-  <% end %>
-  <% if user_signed_in? %>
-    <%= form_with(model: [@blog, @comment], local: true) do |f| %>
-      <%= f.text_area :content, class: "form-control", rows: 5 %>
-      <%= button_tag type: "submit", class: "btn btn-success float-right mt-1" do %>
-        <i class="far fa-comments"></i> コメントする
-      <% end %>
+  <% unless @blog.user == current_user %>
+    <% if @favorite.present? %>
+      <%= link_to 'お気に入り解除する', favorite_path(blog_id: @blog.id, id: @favorite), method: :delete, class: 'btn btn-danger' %>
+    <% else %>
+      <%= link_to 'お気に入りする', favorites_path(blog_id: @blog.id), method: :post, class: 'btn btn-default' %>
     <% end %>
   <% end %>
+
+  <div class="comment-wrapper border-top mb-10">
+    <p class="mt-5">コメント一覧</p>
+    <% @comments.each do |c| %>
+      <div>
+        <a href="<%= users_show_path(c.user_id) %>">icon</a>
+        <br />
+        <%= c.content %>
+        <div class="blog-links">
+          <%= link_to '編集', "#", class: 'btn btn-info text-white' %> |
+          <%= link_to '削除', "#", method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-danger text-white' %>
+        </div>
+      </div>
+      <br />
+    <% end %>
+    <% if user_signed_in? %>
+      <%= form_with(model: [@blog, @comment], local: true) do |f| %>
+        <%= f.text_area :content, class: "form-control", rows: 5 %>
+        <%= button_tag type: "submit", class: "btn btn-success float-right mt-1" do %>
+          <i class="far fa-comments"></i> コメントする
+        <% end %>
+      <% end %>
+    <% end %>
+  </div>
 </div>

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_08_20_050408) do
+ActiveRecord::Schema.define(version: 2021_08_24_081114) do
 
   create_table "active_storage_attachments", charset: "utf8mb4", force: :cascade do |t|
     t.string "name", null: false
@@ -64,6 +64,20 @@ ActiveRecord::Schema.define(version: 2021_08_20_050408) do
     t.text "email"
     t.integer "category"
     t.text "content"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "favorites", charset: "utf8mb4", force: :cascade do |t|
+    t.integer "user_id"
+    t.integer "blog_id"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "relationships", charset: "utf8mb4", force: :cascade do |t|
+    t.integer "follower_id"
+    t.integer "followed_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end

@@ -1,5 +1,12 @@
 <div class="container my-container">
   <h1>詳細</h1>
+  <% unless @user == current_user %>
+    <% if @relationship.present? %>
+      <%= link_to 'フォロー解除', relationship_path(user_id: @user.id, id: @relationship), method: :delete, class: 'btn btn-danger' %>
+    <% else %>
+      <%= link_to 'フォローする', relationships_path(user_id: @user.id), method: :post, class: 'btn btn-default' %>
+    <% end %>
+  <% end %>
   <%= image_tag(@user.icon) if @user.icon.attached? %>
   <p>名前 : <%= @user.name %></p>
   <p>メールアドレス : <%= @user.email %></p>

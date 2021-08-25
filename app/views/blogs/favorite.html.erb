@@ -1,0 +1,12 @@
+<h1>favarite</h1>
+<div class="row">
+  <%@blogs.each do |blog| %>
+    <div class="col-md-4" style="margin-top: 12px;">
+      <div class="box-in">
+        <h2><%= blog.title %></h2>
+        <p><%= blog.content %></p>
+        <p><%= blog.created_at %></p>
+      </div>
+    </div>
+  <% end %>
+</div>
